@@ -1,2 +1,2 @@
-# triple_menu
+# Three-level adaptive menu!
 Test tusk menu

@@ -86,7 +86,7 @@ function handleArrow(arrow, lastArrow, sub, menu, subArrow) {
             else {
                 offAllArrows(arrow);
                 switchArrow(thisArrow, subMenu);
-                scrollTo(thisLink.parentElement, menu, subArrow[i].previousElementSibling);
+                scrollTo(thisLink.parentElement, menu, thisLink.closest('li'));
             }
 
             lastArrow = thisArrow
@@ -96,17 +96,8 @@ function handleArrow(arrow, lastArrow, sub, menu, subArrow) {
 
 function scrollTo(elem, cont, parElem){
     let topPos = elem.offsetTop;
-
-    console.log(topPos);
+    if (parElem) {
+        topPos = parElem.offsetTop + elem.offsetTop + 63;
+    }
     cont.scrollTop = topPos;
-}
-
-function getCoords(elem) {
-    var box = elem.getBoundingClientRect();
-  
-    return {
-      top: box.top + pageYOffset,
-      left: box.left + pageXOffset
-    };
-  
 }

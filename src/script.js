@@ -75,11 +75,17 @@ function handleArrow(arrow, lastArrow, sub, menu, subArrow) {
 
         arrow[i].addEventListener('click', function() {
             if (thisArrow == lastArrow) {
-                switchArrow(thisArrow, subMenu);
+                if (thisArrow.classList.contains('menu__arrow')) {
+                    offAllArrows(subArrow);
+                    switchArrow(thisArrow, subMenu);
+                }
+                else {
+                    switchArrow(thisArrow, subMenu);
+                }
             }
             else if (sub) {
-                offAllArrows(arrow);
                 offAllArrows(subArrow);
+                offAllArrows(arrow);
                 switchArrow(thisArrow, subMenu);
                 scrollTo(thisLink.parentElement, menu);
             }
